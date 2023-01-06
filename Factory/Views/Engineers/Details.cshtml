@@ -1,3 +1,42 @@
 @{
     Layout = "_Layout";
 }
+@using Factory.Models
+@model Factory.Models.Engineer
+@using System.Collections.Generic;
+
+<h1>Engieers Details Page</h1>
+
+<h3>@Html.DisplayNameFor(model => model.Name):
+     @Html.DisplayFor(model => model.Name)</h3>
+
+     @if(@Model.JoinEntities.Count == 0)
+     {
+        <p>This Engineer is not assigned a machine</p>
+     }
+    else
+{
+List<MachineEngineer> MachineList = new List<MachineEngineer>();
+    @foreach(MachineEngineer machine in Model.JoinEntities)
+    {
+        MachineList.Add(machine);
+    }
+    List<MachineEngineer> sortedList = MachineList.OrderBy(MachineEngineer => MachineEngineer.Machine.Name).ToList();
+
+    <h4>This Engieers has the following Machines:</h4>
+    <ul class="row">
+    @foreach (MachineEngineer join in sortedList)
+        {
+            <li id="machine">machine: @join.Machine.Name | @join.Machine.Name</li>
+            @using (Html.BeginForm("DeleteJoin", "Engineers"))
+            {
+                @Html.Hidden("joinId", @join.MachineEngineerId)
+                <input type="submit" value="Delete" class="btn btn-dark" />
+            }
+        }
+    </ul>
+}
+
+  <p>@Html.ActionLink("Edit Engineer", "Edit", new { id = Model.EngineerId })</p>
+  <p>@Html.ActionLink("Delete Engineer", "Delete", new { id = Model.EngineerId })</p>
+  <p>@Html.ActionLink("Add a Machine", "AddMachine", new { id = Model.EngineerId })</p>
