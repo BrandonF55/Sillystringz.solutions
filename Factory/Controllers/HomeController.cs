@@ -1,12 +1,24 @@
-using Dr-Sillystring-Factory.Models;
+using Microsoft.AspNetCore.Mvc;
+using Factory.Models;
 
-namespace Dr-Sillystring-Factory.Controllers
+
+namespace Factory.Controllers
 {
-  public class HomeController : Controller
-  {
-    private readonly Dr-Sillystring-Factory _db;
+    public class HomeController : Controller
+    {
 
-      public HomeController(DoctorsOfficeContext db)
+    private readonly FactoryContext _db;
+
+    public HomeController(FactoryContext db)
+    {
+      _db = db;
+    }
+     [HttpGet("/")]
+      public ActionResult Index()
       {
-        _db = db;
+        ViewBag.Machine = new List<Machine>(_db.Machines);
+        ViewBag.Engineer = new List<Engineer>(_db.Engineers);
+        return View(ViewBag.Machine);
       }
+    }
+}
