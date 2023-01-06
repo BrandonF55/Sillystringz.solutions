@@ -8,3 +8,30 @@ div#footer {
   padding: 10px;
   margin: auto;
 }
+
+p#foot {
+  padding: 5px;
+  margin-right: 20px;
+  margin-left: 20px;
+  
+}
+
+.jumbotron {
+  text-align: center;
+  padding: 50px;
+  background: #333;
+  color: white;
+}
+
+li#engineer {
+  list-style-position: inside;
+  padding: 10px;
+  list-style-image: url(https://icons8.com/icon/aO8gfw747wny/engineer-skin-type-3);
+}
+
+
+li#machine {
+  list-style-position: inside;
+  padding: 10px;
+  list-style-image: url(https://icons8.com/icon/26332/robot);
+}

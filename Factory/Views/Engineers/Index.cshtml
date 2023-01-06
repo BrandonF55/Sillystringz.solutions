@@ -4,7 +4,7 @@
 
 @using Factory.Models;
 
-<h1>List Of Engineers</h1>
+<h1 class="jumbotron"><u>List Of Engineers</u></h1>
 
 @if(@Model.Count == 0)
 {
@@ -15,10 +15,11 @@ else
     <ul>
         @foreach (Engineer engineer in Model)
         {
-            <li>@Html.ActionLink($"{engineer.Name}", "Details", new { id = engineer.EngineerId})</li>
+            <li class="engineer">@Html.ActionLink($"{engineer.Name}", "Details", new { id = engineer.EngineerId})</li>
         }
 
     </ul>
 }
 
-     <p class="btn btn-dark" id="link">@Html.ActionLink("Add new Engineer", "Create")</p>
+     <p class="btn btn-dark" id="link">@Html.ActionLink("Add new Engineer", "Create")</p><br>
+   
