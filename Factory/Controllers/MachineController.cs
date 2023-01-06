@@ -35,6 +35,27 @@ namespace Factory.Controllers
       return RedirectToAction("Index");
     }
 
+     public ActionResult AddEngineer(int id)
+    {
+      Machine thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
+      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
+      return View(thisMachine);
+    }
+
+    [HttpPost]
+    public ActionResult AddEngineer(Machine machine, int engineerId)
+    {
+#nullable enable
+      MachineEngineer? joinEntity = _db.MachineEngineer.FirstOrDefault(join => (join.EngineerId == engineerId && join.MachineId == join.MachineId));
+#nullable disable
+      if (joinEntity == null && engineerId != 0)
+      {
+        _db.MachineEngineer.Add(new MachineEngineer() { EngineerId = engineerId, MachineId = machine.MachineId });
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Details", new { id = machine.MachineId });
+    }
+
     public ActionResult Details(int id)
     {
       Machine thisMachine = _db.Machines
