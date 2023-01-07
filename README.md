@@ -24,7 +24,8 @@
 * Install MySQL Community Server and MySQL Workbench. Follow the instructions _[here](https://www.learnhowtoprogram.com/c-and-net/getting-started-with-c/installing-and-configuring-mysql/)_.
 * Clone down the git repo ```https://github.com/BrandonF55/Sillystringz.solutions.git``` to the ```desktop``` directory
 * Open the project with VSCode or a different source code editor.
-* Restore required packages: change directory to ```Factory``` and restore with ```$ dotnet restore```
+* Restore required packages: change directory to ```Factory``` To use a tool called dontet-ef run ```$ dotnet tool install --global dotnet-ef --version 6.0.0
+``` and in order to use dotnet-ef we also need to install ```$ dotnet add package Microsoft.EntityFrameworkCore.Design -v 6.0.0``` then restore with ```$ dotnet restore```
 * While in the ```Factory``` directory use ```$ dotnet build``` to build the program.
 * While in the ```Factory``` directory use ```$ dotnet watch run``` to run the program in the browser with a watcher.
 
